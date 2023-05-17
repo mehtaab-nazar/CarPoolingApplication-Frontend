@@ -1,0 +1,13 @@
+<app-navbar [LoggedIn]="LoggedIn"></app-navbar>
+<div class="container-flow dashboard m-3">
+    <div class="row m-2">
+        <div class="col-3 m-4"><span class="RidesHeader" id="bookedRide">Booked Rides</span>
+<div *ngFor="let ride of bookedRides">
+            <app-ride-card [ride]="ride" [isConfirm]="true" [isDashboard]="true" [isBookedRide]="true"></app-ride-card></div>
+        </div>
+        <div class="col-3 m-4"><span class="RidesHeader" id="offeredRide">Offered Rides</span>
+            <div *ngFor="let ride of offeredRides">
+            <app-ride-card [ride]="ride" [isConfirm]="true" [isDashboard]="true" [isBookedRide]="false"></app-ride-card></div>
+        </div>
+    </div>
+</div>

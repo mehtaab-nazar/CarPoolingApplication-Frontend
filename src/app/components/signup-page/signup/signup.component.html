@@ -1,0 +1,54 @@
+<div class="container credentialsContainer">
+  <div class="col signup">Sign Up
+    <div class="container line"></div>
+    <form [formGroup]="signUpForm">
+    <div class="form-floating form-group">
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName" [ngClass]="{
+        'is-valid':signUpForm.controls.firstName.valid,
+        'is-invalid':signUpForm.controls.firstName.invalid && signUpForm.controls.firstName.touched}">
+      <label for="firstName">Enter First Name</label>
+      <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.firstName.errors?.required">Required!</div>
+      <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.firstName.errors?.pattern">First Name can contain only alphabets!</div>
+      </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName" [ngClass]="{
+        'is-valid':signUpForm.controls.lastName.valid,
+        'is-invalid':signUpForm.controls.lastName.invalid && signUpForm.controls.lastName.touched}" >
+      <label for="lastName">Enter Last Name</label> 
+      <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.lastName.invalid && signUpForm.controls.lastName.touched">Required!</div>
+    </div>
+    <div class="form-floating">
+      <input class="form-control form-control-lg" type="text" placeholder="User Id" id="userId" formControlName="userId">
+      <label for="userId">Enter User Name (optional)</label>
+      </div>
+    <div class="form-floating">
+        <input type="email" class="form-control" id="emailId" placeholder="Email Id" formControlName="emailId" [ngClass]="{
+          'is-valid':signUpForm.controls.emailId.valid,
+          'is-invalid':signUpForm.controls.emailId.invalid && signUpForm.controls.emailId.touched}" >
+        <label for="emailId">Enter Email Id</label>
+        <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.emailId.errors?.required">Required!</div>
+        <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.emailId.errors?.email">Enter Valid Email Id!</div>
+      </div>
+      <div class="d-flex">
+        <div class="form-floating">
+            <input class="form-control form-control-lg" [type]="show ? 'text' : 'password'" placeholder="Enter Password" id="password" formControlName="password" [ngClass]="{
+              'is-valid':signUpForm.controls.password.valid,
+              'is-invalid':signUpForm.controls.password.invalid && signUpForm.controls.password.touched}" >
+            <label for="password">Enter Password</label>
+            <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.password.errors?.required">Required!</div>
+            <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.password.errors?.pattern">Password must contain atleast 1 uppercase letter, 1 lowercase letter and a special character!</div>
+            <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.password.errors?.minlength">Password must contain atleast 8 characters!</div>
+            <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.password.errors?.maxlength">Password can contain a maximum of 15 characters!</div>
+          </div>
+         <i *ngIf="show" class="bi bi-eye-fill m-2 ms-1" (click)="show=!show"></i>
+        <i *ngIf="!show" class="bi bi-eye-slash-fill m-2 ms-1" (click)="show=!show"></i> 
+      </div>
+    <div class="form-floating">
+    <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" id="confirmPassword">
+    <label for="confirmPassword">Confirm Password</label>
+    </div>
+    <button type="submit" id="submitButton" (click)="addUser()" [disabled]="signUpForm.invalid">Submit</button>
+    <div class="button"  routerLink="../login">Already a member?<strong> LOG IN</strong></div> 
+</form>
+<div class="image"><img src="assets/img2_half_trans.png" width="430px"></div>
+</div>

@@ -1,0 +1,98 @@
+<!--<form [formGroup]="rideForm">
+<div class="container" [hidden]="!nextForm">
+      <label for="startingLocation">From</label>
+      <input type="text" class="form-control" id="startingLocation" placeholder="" formControlName="startingLocation">
+      <label for="endingLocation">To</label>
+      <input type="text" class="form-control" id="endingLocation" placeholder="" formControlName="endingLocation">
+  <label for="date">Enter Date</label>
+  <input type="date" class="form-control" id="date" placeholder="" formControlName="date" >
+  <label class="time">Time
+    <div class="row">
+    <button class="col-4 timeSlot" (click)="timeSlot='5am-9am'">5am-9am</button>
+    <button class="col-4 timeSlot" (click)="timeSlot='9am-12pm'">9am-12pm</button>
+    <button class="col-4 timeSlot" (click)="timeSlot='12pm-3pm'">12pm-3pm</button>
+    <button class="col-4 timeSlot" (click)="timeSlot='3pm-6pm'">3pm-6pm</button>
+    <button class="col-4 timeSlot" (click)="timeSlot='6pm-9pm'">6pm-9pm</button>
+</div></label>
+</div>
+ <div class="d-flex"> 
+  <div><label for="startingLocation">From</label>
+    <input type="text" class="form-control" id="startingLocation" placeholder=""></div>
+    <i class="bi bi-circle-fill"></i>
+    </div>
+
+<label for="endingLocation">To</label>
+    <div class="d-flex">
+    <input type="text" class="form-control" id="endingLocation" placeholder="">
+    <i class="bi bi-geo-alt-fill"></i></div>
+  <div class="d-flex">
+   <div> <label for="date">Enter Date</label>
+      <input type="date" class="form-control" id="date" placeholder=""></div>
+      </div>
+    <label class="time">Time
+        <div class="row">
+        <button class="col-4 timeSlot">5am-9am</button>
+        <button class="col-4 timeSlot">9am-12pm</button>
+        <button class="col-4 timeSlot">12pm-3pm</button>
+        <button class="col-4 timeSlot">3pm-6pm</button>
+        <button class="col-4 timeSlot">6pm-9pm</button>
+    </div>
+</label>-->
+<!--<div formArrayName="stops"   *ngFor="let stop of rideForm.get('stops')['controls'];let i=index;last as isLast">
+  <div class="d-inline-flex">
+    <div><div class="d-inline-flex justify-content-between"><label for="stop">Stop {{i+1}}</label></div>
+   <input type="text" class="form-control" id="stop" placeholder=" " [formGroupName]="i"></div>
+   <i class="bi bi-plus" (click)="addStop()" *ngIf="isLast"></i>
+  <i class="bi bi-dash"(click)="removeStop(i)" ></i> 
+   <i class="bi bi-geo-alt-fill position-absolute end-0" *ngIf="isLast && i>0"></i>
+   <i class="bi bi-circle-fill position-absolute end-0" *ngIf="i==0"></i>
+   </div>
+</div>
+<div [hidden]="nextForm">
+  <div formArrayName="stops" *ngFor="let stop of stops.controls,let i=index;last as isLast">
+    <div class="d-inline-flex"><div class="d-inline-flex justify-content-between"><label>Stop {{i+1}}</label>   
+  <input formControlName="{{i}}" type="text" class="form-control" placeholder=" "></div>
+  <i class="bi bi-plus" (click)="addStop()" *ngIf="isLast"></i>
+  <i class="bi bi-dash"(click)="removeStop(i)" ></i> 
+</div>
+</div>
+
+<div class="row">
+<span class="d-flex flex-column col"><label class="">Available Seats</label>
+  <span>
+  <button class="btn rounded-circle" (click)="seatsRequired=1">1</button>
+  <button class="btn rounded-circle"  (click)="seatsRequired=2">2</button>
+  <button class="btn rounded-circle"  (click)="seatsRequired=3">3</button></span></span>
+  <span class="Price col">
+    <label>Price</label>
+    <input type="text" class="form-control" formControlName="cost" placeholder="">
+  </span>
+</div>
+<button  (click)="searchRide()"></button>
+ <!-- <div class="d-flex">
+  <div><label for="startingLocation">Stop 1</label>
+    <input type="text" class="form-control" id="startingLocation" placeholder=""></div>
+    <i class="bi bi-circle-fill"></i>
+    </div>
+   <div class="d-flex">
+  <div><label for="endingLocation">Stop 2</label>
+    <input type="text" class="form-control" id="endingLocation" placeholder=""></div>
+  </div>
+  <div class="d-flex">
+  <div><label for="endingLocation">Stop 3
+  <input type="text" class="form-control" id="endingLocation" placeholder=""></label></div>
+    <i class="bi bi-geo-alt-fill"></i></div>
+  <div class="d-flex justify-content-between">
+    <span class="d-flex flex-column"><label class="">Available Seats</label>
+  <span>
+    <button class="btn rounded-circle">1</button>
+  <button class="btn rounded-circle">2</button>
+  <button class="btn rounded-circle">3</button></span></span>
+  <span class="Price">
+    <label>Price</label>
+    <input type="text" class="form-control" id="endingLocation" placeholder="">
+  </span>
+</div>
+<button >Submit</button>
+</div>
+</form>-->

@@ -1,0 +1,151 @@
+<app-navbar [LoggedIn]="LoggedIn"></app-navbar>
+<div class="container-flow options">
+<div class="row" *ngIf="!offerRide">
+<div class="col-3 shadow card m-2 ms-5 p-3">
+    <div class="card-title d-flex"><div>Book A Ride</div>
+        <div class="form-check form-switch position-absolute end-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked (change)="offerRide=! offerRide"/>
+      </div>
+    </div>
+    <div class="card-subtitle mb-2 text-muted">we get you matches asap!</div>
+    <form class="container-flow rideDetails " [formGroup]="bookRideForm">
+      <div class="container mb-3">
+        <label for="startingLocation">From</label>
+        <input type="text" class="form-control" id="startingLocation" placeholder="" formControlName="startingLocation" [ngClass]="{
+          'is-valid':bookRideForm.controls.startingLocation.valid,
+          'is-invalid':bookRideForm.controls.startingLocation.invalid && bookRideForm.controls.startingLocation.touched}">
+        <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.startingLocation.errors?.required">Required!</div>
+        <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.startingLocation.errors?.pattern">Please enter valid source!</div>
+        <label for="endingLocation">To</label>
+        <input type="text" class="form-control" id="endingLocation" placeholder="" formControlName="endingLocation" [ngClass]="{
+          'is-valid':bookRideForm.controls.endingLocation.valid,
+          'is-invalid':bookRideForm.controls.endingLocation.invalid && bookRideForm.controls.endingLocation.touched}">
+          <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.endingLocation.errors?.required">Required!</div>
+          <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.endingLocation.errors?.pattern">Please enter valid destination!</div>
+          <div class="invalid-feedback m-1 mb-2 d-block" *ngIf="(bookRideForm.controls.endingLocation.value==bookRideForm.controls.startingLocation.value) && bookRideForm.controls.startingLocation.dirty">Source and Destination cannot be the same!</div>
+          <label for="date">Enter Date</label>
+          <input type="date" class="form-control" id="date" placeholder="" formControlName="date" [min]=todayDate [ngClass]="{
+      'is-valid':bookRideForm.controls.date.valid,
+      'is-invalid':bookRideForm.controls.date.invalid && bookRideForm.controls.date.touched}">
+      <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.date.errors?.required">Required!</div>
+    <label class="time mb-1">Time
+      <div class="row radio-toolbar">
+        <span class="col-4"><input type="radio" id="5am-9am" name="timeSlot" value="5am-9am">
+        <label for="5am-9am" (click)="timeSlot='5am-9am'">5am-9am</label></span>
+        <span class="col-4"><input type="radio" id="9am-12pm" name="timeSlot" value="9am-12pm">
+        <label for="9am-12pm" (click)="timeSlot='9am-12pm'">9am-12pm</label></span>
+        <span class="col-4"><input type="radio" id="12pm-3pm" name="timeSlot" value="12pm-3pm">
+        <label for="12pm-3pm" (click)="timeSlot='12pm-3pm'">12pm-3pm</label></span>
+        <span class="col-4"><input type="radio" id="3pm-6pm" name="timeSlot" value="3pm-6pm">
+        <label for="3pm-6pm" (click)="timeSlot='3pm-6pm'">3pm-6pm</label></span>
+        <span class="col-4"><input type="radio" id="6pm-9pm" name="timeSlot" value="6pm-9pm">
+        <label for="6pm-9pm" (click)="timeSlot='6pm-9pm'">6pm-9pm</label></span>
+  </div></label>
+  <span class="d-flex flex-column col mb-1"><label class="">Required Seats</label>
+    <span class="radio-toolbar-seats">
+      <span class="col-4"><input type="radio" id="1" name="bookedSeats" value="1" formControlName="bookedSeats">
+        <label for="1" class="btn rounded-circle" >1</label></span>
+        <span class="col-4"><input type="radio" id="2" name="bookedSeats" value="2" formControlName="bookedSeats">
+        <label for="2" class="btn rounded-circle">2</label></span>
+        <span class="col-4"><input type="radio" id="3" name="bookedSeats" value="3" formControlName="bookedSeats">
+        <label for="3" class="btn rounded-circle">3</label></span>
+        <div class="invalid-feedback m-1 mb-2" *ngIf="bookRideForm.controls.bookedSeats.errors?.required">Required!</div>
+  </span>
+</span>
+    <button class="submitButton" (click)="submitBookedRide()" [disabled]="bookRideForm.invalid">Submit</button>
+    </div>
+</form>
+</div>
+<div class="col-8 container m-0" [hidden]="matches">
+<div class=" "><div class="matches">Your Matches</div>
+<div class="row">
+  <div class="col-4"  *ngFor="let ride of offeredRides"><app-ride-card [ride]="ride" [bookedRide]="bookRideForm.value" [isConfirm]="true"></app-ride-card></div>
+</div>
+</div>
+</div>
+</div>
+<form [formGroup]="offerRideForm">
+<div class="row" *ngIf="offerRide">
+    <div class="col-3 shadow card m-2 ms-5 p-3">
+        <div class="card-title d-flex"><div>Offer A Ride</div>
+            <div class="form-check form-switch position-absolute end-0">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  (change)="offerRide=! offerRide"/>
+          </div>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">we get you matches asap!</div>
+        <div class="container-flow rideDetails">
+                <div class="container">
+                      <label for="startingLocation">From</label>
+                      <input type="text" class="form-control" id="startingLocation" placeholder="" formControlName="startingLocation" [ngClass]="{
+                        'is-valid':offerRideForm.controls.startingLocation.valid,
+                        'is-invalid':offerRideForm.controls.startingLocation.invalid && offerRideForm.controls.startingLocation.touched}">
+                      <div class="invalid-feedback m-1 mb-2" *ngIf="offerRideForm.controls.startingLocation.errors?.required">Required!</div>
+                      <div class="invalid-feedback m-1 mb-2" *ngIf="offerRideForm.controls.startingLocation.errors?.pattern">Please enter valid source!</div>
+                      <label for="endingLocation">To</label>
+                      <input type="text" class="form-control" id="endingLocation" placeholder="" formControlName="endingLocation" [ngClass]="{
+                        'is-valid':offerRideForm.controls.endingLocation.valid,
+                        'is-invalid':offerRideForm.controls.endingLocation.invalid && offerRideForm.controls.endingLocation.touched}">
+                      <div class="invalid-feedback m-1 mb-2" *ngIf="offerRideForm.controls.endingLocation.errors?.required">Required!</div>
+                      <div class="invalid-feedback m-1 mb-2" *ngIf="offerRideForm.controls.endingLocation.errors?.pattern">Please enter valid destination!</div>
+                      <div class="invalid-feedback m-1 mb-2 d-block" *ngIf="(offerRideForm.controls.endingLocation.value==offerRideForm.controls.startingLocation.value) && offerRideForm.controls.startingLocation.dirty">Source and Destination cannot be the same!</div>
+                      <label for="date">Enter Date</label>
+                    <input type="date" class="form-control" id="date" placeholder="" formControlName="date" [min]=todayDate [ngClass]="{
+                    'is-valid':offerRideForm.controls.date.valid,
+                    'is-invalid':offerRideForm.controls.date.invalid && offerRideForm.controls.date.touched}">
+                  <div class="invalid-feedback m-1 mb-2" *ngIf="offerRideForm.controls.date.errors?.required">Required!</div>
+                  <label class="time mb-1">Time
+                    <div class="row radio-toolbar"> 
+                      <span class="col-4"><input type="radio" id="5am-9am" name="timeSlot" value="5am-9am" formControlName="timeSlot">
+                      <label for="5am-9am">5am-9am</label></span>
+                      <span class="col-4"><input type="radio" id="9am-12pm" name="timeSlot" value="9am-12pm" formControlName="timeSlot">
+                      <label for="9am-12pm" (click)="timeSlot='9am-12pm'">9am-12pm</label></span>
+                      <span class="col-4"><input type="radio" id="12pm-3pm" name="timeSlot" value="12pm-3pm" formControlName="timeSlot">
+                      <label for="12pm-3pm" (click)="timeSlot='12pm-3pm'">12pm-3pm</label></span>
+                      <span class="col-4"><input type="radio" id="3pm-6pm" name="timeSlot" value="3pm-6pm" formControlName="timeSlot">
+                      <label for="3pm-6pm" (click)="timeSlot='3pm-6pm'">3pm-6pm</label></span>
+                      <span class="col-4"><input type="radio" id="6pm-9pm" name="timeSlot" value="6pm-9pm" formControlName="timeSlot">
+                      <label for="6pm-9pm" (click)="timeSlot='6pm-9pm'">6pm-9pm</label></span>
+                </div></label>
+                </div>
+        </div>
+        <button type="button" class="position-absolute bottom-0 end-0 m-3 nextButton" (click)="next=!next" [disabled]="offerRideForm.controls.startingLocation.invalid || offerRideForm.controls.endingLocation.invalid || offerRideForm.controls.date.invalid || offerRideForm.controls.timeSlot.invalid">Next>></button>
+    </div>
+    <div class="col-3 shadow card  m-2 ms-5 p-3" [hidden]="!next">
+        <div class="card-title d-flex"><div>Offer A Ride</div>
+            <div class="form-check form-switch position-absolute end-0">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  (change)="offerRide=! offerRide" />
+          </div>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">we get you matches asap!</div>
+        <div class="container-flow rideDetails">
+  <div formArrayName="stops" *ngFor="let stop of stops.controls,let i=index;last as isLast">
+    <div class="d-inline-flex mb-2"><div class="d-inline-flex justify-content-between"><label class="stop-labels">Stop {{i+1}}</label>   
+  <input formControlName="{{i}}" type="text" class="form-control mb-0" placeholder=" "></div>
+  <i class="bi bi-plus" (click)="addStop()" *ngIf="isLast"></i>
+  <i class="bi bi-dash"(click)="removeStop(i)" ></i> 
+</div>
+<div class="invalid-feedback m-1 mb-2 d-block" *ngIf="(offerRideForm.controls.startingLocation.value==stop.value)">Stop location cannot be same as the source!</div>
+<div class="invalid-feedback m-1 mb-2 d-block" *ngIf="(offerRideForm.controls.endingLocation.value==stop.value)">Stop location cannot be same as the destination!</div>
+</div>
+
+  <div class="row">
+<div class="d-flex flex-column col"><label>Available Seats</label>
+  <span class="radio-toolbar-seats">
+    <span class="col"><input type="radio" id="1" name="availableSeats" value="1" formControlName="availableSeats">
+      <label for="1" class="btn rounded-circle">1</label></span>
+      <span class="col"><input type="radio" id="2" name="availableSeats" value="2" formControlName="availableSeats">
+      <label for="2" class="btn rounded-circle">2</label></span>
+      <span class="col"><input type="radio" id="3" name="availableSeats" value="3" formControlName="availableSeats">
+      <label for="3" class="btn rounded-circle">3</label></span>
+</span>
+</div>
+  <div class="Price col">
+    <label>Price</label>
+    <input type="text" class="form-control cost" formControlName="cost" placeholder="">
+  </div>
+</div>
+</div>
+<button class="submitButton" (click)="submitOfferRide()" [disabled]="offerRideForm.invalid">Submit</button>
+</div>
+</div>
+</form>

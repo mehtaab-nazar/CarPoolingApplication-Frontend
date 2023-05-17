@@ -1,0 +1,47 @@
+.card-title{
+    font-size:25px;
+    font-weight: 700;
+    color:rgb(255, 179, 47);
+}
+.container{
+    background-image:url("/assets/img4.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 100vh;
+}
+button{
+    border:none;
+    background-color: white;
+}
+.list-group-item{
+    color:rgba(147,25,255,255);
+    font-weight: bolder;
+}
+.card{
+    border-radius:20px;
+}
+.card,.list-group-item{
+background-color:white;
+}
+strong{
+    color: black;
+}
+.bi{
+    color: rgb(255, 179, 47);
+    font-size: 25px;
+}
+.rounded-circle{
+    border:3px solid rgba(147,25,255,255);
+}
+.bi-pencil-square,.bi-car-front-fill,.bi-box-arrow-right{
+    color:white;
+}
+.bi-pencil-square,.btn-edit{
+    color: rgba(147,25,255,255);
+}
+.bi-car-front-fill,.btn-rides{
+    color:rgb(78, 221, 78);
+}
+.bi-box-arrow-right,.btn-logout{
+    color:rgb(226, 4, 4)
+}

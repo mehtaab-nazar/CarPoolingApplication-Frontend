@@ -1,0 +1,24 @@
+<nav class="navbar"> 
+    <div class="container navbar-container"> 
+      <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" height="50px"/>
+      </a>
+    </div> 
+  <div class="navbar-container position-absolute end-0" *ngIf="LoggedIn">
+    <div class="dropdown">
+    <div class="dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{firstName}} {{lastName}}
+    <img src={{imageurl}} class="rounded-circle position-absolute end-5 mx-2 my-0" height="32px">
+    </div>
+    <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" routerLink="/profile">Profile</a>
+      <a class="dropdown-item" href="#" routerLink="/ride/book-ride">Book a ride</a>
+      <a class="dropdown-item" href="#" routerLink="/ride/offer-ride">Offer a ride</a>
+      <a class="dropdown-item" href="#" routerLink="/dashboard">My Rides</a>
+      <a class="dropdown-item" href="#" routerLink="/login" (click)="logOut()">Logout</a>
+    </div>
+    </div>
+  </div>
+</nav>
+
+

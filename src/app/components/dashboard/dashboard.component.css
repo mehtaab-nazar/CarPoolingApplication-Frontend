@@ -1,0 +1,19 @@
+.RidesHeader {
+  padding: 10px;
+  color: white;
+  border-radius: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#bookedRide {
+  background-color: rgba(147, 25, 255, 255);
+}
+#offeredRide {
+  background-color: rgba(255, 172, 25, 255);
+}
+.dashboard {
+  background-image: url("/assets/img4.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 100vh;
+}

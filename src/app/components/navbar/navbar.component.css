@@ -1,0 +1,17 @@
+.navbar{
+    margin-right:153px;
+}
+.dropdown{
+    font-size:17px;
+    font-weight: 700;
+}
+.dropdown-item{
+    color:grey;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px;
+}
+.dropdown-item:hover{
+    color:white;
+    background-color: rgba(147,25,255,255);
+}

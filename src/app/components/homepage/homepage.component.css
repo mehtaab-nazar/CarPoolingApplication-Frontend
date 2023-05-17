@@ -1,0 +1,14 @@
+.header{
+   font-size:20px;
+   font-weight: 500;
+   color: rgba(50,64,86,255);
+}
+.heading{
+    font-size:80px;
+    font-weight: 700;
+    width: 45vw;
+    margin:0px;
+    line-height: 1.15;
+    margin-top: 19px;
+    margin-bottom: 10px;
+}

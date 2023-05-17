@@ -1,0 +1,72 @@
+.credentialsContainer {
+  background-color: rgba(255, 172, 25, 255);
+}
+.signup {
+  padding: 65px;
+  font-size: 23px;
+  font-weight: bolder;
+  color: white;
+  padding-left: 151px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+.line {
+  border-bottom: 2px solid white;
+  height: 10px;
+  width: 63px;
+  margin-top: -8px;
+  margin-bottom: 28px;
+  margin-left: 20px;
+}
+.form-control {
+  margin: 0px;
+  margin-bottom: 15px;
+  width: 250px;
+  height: 50px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+label {
+  color: grey;
+  font-size: 12px;
+  padding: 10px;
+  font-weight: 500;
+}
+.form-floating {
+  margin-left: -68px;
+}
+#submitButton {
+  font-size: 14px;
+  padding-left: 22px;
+  padding-right: 22px;
+  color: white;
+  border: none;
+  height: 2vw;
+  width: 7vw;
+  font-weight: 500;
+  border-radius: 15px;
+  background-color: rgba(147, 25, 255, 255);
+}
+.bi {
+  color: white;
+  font-size: 20px; 
+}
+.button {
+  width: max-content;
+  margin: 28px;
+  margin-left: -30px;
+  font-size: 15px;
+}
+.image {
+  position: relative;
+  bottom: 0;
+}
+:disabled{
+background-color:rgb(248, 212, 51)!important;
+}
+.invalid-feedback{
+  font-size:10px;
+}
+.add-image{
+font-size:15px;
+}
