@@ -6,7 +6,7 @@
       <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName" [ngClass]="{
         'is-valid':signUpForm.controls.firstName.valid,
         'is-invalid':signUpForm.controls.firstName.invalid && signUpForm.controls.firstName.touched}">
-      <label for="firstName">Enter First Name</label>
+      <label for="firstName">Enter  Name</label>
       <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.firstName.errors?.required">Required!</div>
       <div class="invalid-feedback m-1 mb-2" *ngIf="signUpForm.controls.firstName.errors?.pattern">First Name can contain only alphabets!</div>
       </div>
