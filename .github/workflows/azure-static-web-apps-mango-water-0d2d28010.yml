@@ -27,7 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build --prod
+        run:  npm install -g @angular/cli
+              npm install
+              ng build --prod
       
       - name: Build And Deploy
         id: builddeploy
