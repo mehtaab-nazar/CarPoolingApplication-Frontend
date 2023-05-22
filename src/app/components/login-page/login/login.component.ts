@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       },
     error:(err) =>{
 console.log(err.status);
-if(err.status==400){
+if(err.status==500){
   this.showError('User doesnt exist');
   }
   else if(err.status==400){
