@@ -19,7 +19,7 @@ jobs:
         with:
           submodules: true
       - name: Build
-        run: ng build --prod
+        run: ng build --configuration=production
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
