@@ -2,18 +2,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookRide } from '../models/BookRide';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RideService {
-  private apiURL = 'https://localhost:7168/api/';
+  private apiURL:string;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private HttpClient: HttpClient) {}
+  constructor(private HttpClient: HttpClient) {
+ this.apiURL=environment.api;
+}
   getRides(ride: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
 
