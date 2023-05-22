@@ -28,6 +28,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build --prod
+        
+      - name: serve
+        run: npm run serve --configuration=production
+      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
