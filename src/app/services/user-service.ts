@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { UserLogin } from '../models/UserLogin';
+import { environment } from 'src/environments/environment';
 
 const HttpOptions = {
   headers: new HttpHeaders({ 'Content-type': 'application/json' }),
@@ -11,13 +12,15 @@ const HttpOptions = {
   providedIn: 'root',
 })
 export class UserService {
-  private apiURL = 'https://localhost:7168/api/';
+  private apiURL :string;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private Httpclient: HttpClient) {}
+  constructor(private Httpclient: HttpClient) {
+    this.apiURL=environment.api;
+}
 
   getUsers(): Observable<User> 
   {
