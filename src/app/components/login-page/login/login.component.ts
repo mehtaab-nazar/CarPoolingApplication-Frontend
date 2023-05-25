@@ -24,9 +24,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService
   ) {
-    this.userService.getUsers().subscribe((data: any) => {
-      console.log(data);
-    });
   }
 
   ngOnInit(): void {}
